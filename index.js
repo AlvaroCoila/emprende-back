@@ -1,3 +1,8 @@
+//const dotenv = require('dotenv')
+//dotenv.config()
+
+require('dotenv').config()
+
 const { log } = require("console")
 //Declarar una variable con la palabra const
  
@@ -9,6 +14,7 @@ const exportFromAnother = require('./another')
 console.log({exportFromAnother})
 
 const { CLIENT_RENEG_LIMIT } = require("tls")
+const { doesNotThrow } = require("assert")
 
 function requestController ()
 {
@@ -18,4 +24,9 @@ console.log("Hola Mundo!!!&&&&&")
 //configurar nuestro servidor
 const server = http.createServer(requestController)
 
-server.listen(5000)
+const PORT = process.env.PORT
+
+server.listen(process.env.PORT, function(){
+console.log("APLICACION CORRIENDO EN PUERTO:  "+ PORT)
+
+})
